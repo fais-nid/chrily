@@ -535,7 +535,7 @@
   <div class="flow-bar">
     <div class="flow-item"><i class="fa-solid fa-warehouse"></i><span data-key="flowStore">EU Store</span></div>
     <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
-    <div class="flow-item"><i class="fa-solid fa-credit-card"></i><span data-key="flowBuy">We Buy</span></div>
+    <div class="flow-item"><i class="fa-solid fa-credit-card"></i><span data-key="flowBuy">You/We Buy</span></div>
     <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
     <div class="flow-item"><i class="fa-solid fa-plane"></i><span data-key="flowShip">Ship</span></div>
     <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
@@ -1069,6 +1069,8 @@ async function submitOrder() {
     document.getElementById('succOrderId').textContent = currentOrderId;
     document.getElementById('waBtn').onclick = () => window.open(waURL, '_blank');
     document.getElementById('successOverlay').classList.add('open');
+    cart = []; 
+    updateCartUI();
     window.open(waURL, '_blank');
     // reset
     document.getElementById('successInline').style.display = 'none';
