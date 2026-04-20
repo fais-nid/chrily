@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHRILY | EU → Morocco Shipping Agent</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  :root {
+    --navy: #0f1f35;
+    --navy-mid: #1e3a5f;
+    --navy-light: #254b7a;
+    --gold: #d4af37;
+    --gold-light: #f4d03f;
+    --gold-pale: #fdf3c0;
+    --white: #ffffff;
+    --offwhite: #f8f5ee;
+    --text-dark: #0f1f35;
+    --text-muted: #64748b;
+    --border: rgba(212,175,55,0.28);
+    --shadow: 0 20px 60px rgba(10,22,40,0.18);
+    --shadow-gold: 0 8px 32px rgba(212,175,55,0.22);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--offwhite);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  [dir="rtl"] { font-family: 'DM Sans', 'Segoe UI', Tahoma, sans-serif; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top:0; left:0; right:0; z-index:1000;
+    background: rgba(15,31,53,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 0 clamp(16px,4vw,48px);
+    height: 64px;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; font-weight:900;
+    color: var(--gold);
+    letter-spacing: 0.06em;
+    display:flex; align-items:center; gap:10px;
+  }
+  .nav-logo i { font-size:1rem; opacity:0.8; }
+  .nav-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem; font-weight:500;
+    color: rgba(255,255,255,0.35);
+    letter-spacing:0.12em; text-transform:uppercase;
+    display:block; line-height:1;
+  }
+  .nav-links { display:flex; align-items:center; gap:6px; }
+  .lang-btn {
+    background: none; border: 1px solid var(--border);
+    color: rgba(255,255,255,0.6); font-size:0.75rem;
+    padding:5px 11px; border-radius:20px; cursor:pointer;
+    transition: all 0.2s; font-family: inherit; letter-spacing:0.04em;
+  }
+  .lang-btn:hover, .lang-btn.active {
+    background: var(--gold); color: var(--navy); border-color:var(--gold);
+    font-weight:700;
+  }
+  .cart-btn {
+    background: var(--gold); color: var(--navy);
+    border:none; padding:8px 16px; border-radius:22px;
+    font-weight:700; font-size:0.82rem; cursor:pointer;
+    display:flex; align-items:center; gap:6px;
+    transition: all 0.22s; font-family:inherit; margin-left:8px;
+    box-shadow: var(--shadow-gold);
+  }
+  .cart-btn:hover { background: var(--gold-light); transform:translateY(-1px); }
+  .cart-count {
+    background: var(--navy); color: var(--gold);
+    border-radius:50%; width:18px; height:18px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:0.68rem; font-weight:700;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    padding: 88px clamp(16px,5vw,64px) 64px;
+    position:relative; overflow:hidden;
+  }
+  .hero::before {
+    content:'';
+    position:absolute; inset:0;
+    background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(212,175,55,0.07) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 40% at 88% 12%, rgba(212,175,55,0.05) 0%, transparent 60%);
+    pointer-events:none;
+  }
+  .hero-grid {
+    position:absolute; inset:0; opacity:0.035;
+    background-image: linear-gradient(var(--gold) 1px, transparent 1px),
+                      linear-gradient(90deg, var(--gold) 1px, transparent 1px);
+    background-size: 56px 56px;
+    pointer-events:none;
+  }
+
+  /* Flow bar */
+  .flow-bar {
+    display:flex; align-items:center; justify-content:center; gap:12px;
+    margin-bottom:32px; flex-wrap:wrap;
+    animation: fadeUp 0.5s ease both;
+    z-index:1; position:relative;
+  }
+  .flow-item {
+    display:flex; flex-direction:column; align-items:center; gap:5px;
+    color: var(--gold);
+  }
+  .flow-item i { font-size:1.4rem; }
+  .flow-item span { font-size:0.68rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:rgba(255,255,255,0.5); }
+  .flow-arrow { color:rgba(255,255,255,0.2); font-size:1rem; }
+
+  .hero-badge {
+    display:inline-flex; align-items:center; gap:8px;
+    background: rgba(212,175,55,0.12); border: 1px solid var(--border);
+    color: rgba(255,255,255,0.7); font-size:0.75rem; font-weight:500;
+    padding: 6px 16px; border-radius:20px; margin-bottom:20px;
+    letter-spacing:0.06em; text-transform:uppercase;
+    animation: fadeUp 0.5s 0.05s ease both;
+    z-index:1; position:relative;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5.5vw, 4.2rem);
+    font-weight:900; color: var(--white);
+    text-align:center; line-height:1.1;
+    margin-bottom:14px;
+    animation: fadeUp 0.5s 0.1s ease both;
+    z-index:1; position:relative;
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero-stores {
+    color: rgba(255,255,255,0.45); font-size:0.85rem;
+    text-align:center; margin-bottom:40px;
+    animation: fadeUp 0.5s 0.15s ease both;
+    z-index:1; position:relative;
+  }
+  .hero-stores strong { color: var(--gold-light); }
+
+  /* Paste Box */
+  .paste-box {
+    width:100%; max-width:620px; z-index:1;
+    animation: fadeUp 0.5s 0.2s ease both;
+  }
+  .paste-label {
+    color: var(--gold-light); font-size:0.75rem;
+    letter-spacing:0.08em; text-transform:uppercase;
+    font-weight:700; margin-bottom:10px; display:block;
+  }
+  .paste-row {
+    display:flex;
+    background: rgba(255,255,255,0.05);
+    border: 1.5px solid var(--border);
+    border-radius: 14px; overflow:hidden;
+    transition: border-color 0.2s;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.35);
+  }
+  .paste-row:focus-within { border-color: var(--gold); }
+  .paste-input {
+    flex:1; background:transparent; border:none; outline:none;
+    color: var(--white); font-size:0.92rem;
+    padding: 17px 20px; font-family:inherit;
+  }
+  .paste-input::placeholder { color: rgba(255,255,255,0.28); }
+  .check-btn {
+    background: var(--gold); color: var(--navy);
+    border:none; padding: 0 26px; font-weight:700;
+    font-size:0.85rem; cursor:pointer; font-family:inherit;
+    display:flex; align-items:center; gap:8px;
+    transition:all 0.22s; white-space:nowrap;
+    letter-spacing:0.04em; flex-shrink:0;
+  }
+  .check-btn:hover { background: var(--gold-light); }
+
+  /* Preview Card */
+  .preview-card {
+    width:100%; max-width:620px; z-index:1;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid var(--border);
+    border-radius:14px; overflow:hidden;
+    margin-top:20px; display:none;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+  }
+  .preview-card.show { display:block; animation: fadeUp 0.35s ease both; }
+  .preview-inner { display:flex; align-items:center; gap:16px; padding:16px; }
+  .preview-img {
+    width:76px; height:76px; border-radius:10px;
+    background: linear-gradient(135deg, var(--navy-light), var(--navy-mid));
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0; border:1px solid var(--border);
+  }
+  .preview-img i { font-size:1.7rem; color: var(--gold); opacity:0.75; }
+  .preview-info { flex:1; }
+  .preview-link { color: rgba(255,255,255,0.55); font-size:0.78rem; word-break:break-all; margin-bottom:7px; display:block; }
+  .preview-meta { display:flex; gap:10px; flex-wrap:wrap; }
+  .meta-chip {
+    background: rgba(212,175,55,0.12); border:1px solid var(--border);
+    color: var(--gold-light); font-size:0.78rem; font-weight:600;
+    padding: 3px 10px; border-radius:20px;
+  }
+  .add-cart-btn {
+    background: var(--gold); color: var(--navy);
+    border:none; padding: 10px 18px; border-radius:9px;
+    font-weight:700; font-size:0.82rem; cursor:pointer;
+    font-family:inherit; transition:all 0.2s; white-space:nowrap; flex-shrink:0;
+  }
+  .add-cart-btn:hover { background:var(--gold-light); transform:scale(1.03); }
+  .added-msg { color:#4ade80; font-weight:700; font-size:0.9rem; text-align:center; padding:16px; display:none; }
+
+  /* ── SERVICES ── */
+  .section { padding: clamp(48px,7vw,90px) clamp(16px,5vw,64px); }
+  .section-eyebrow {
+    color:var(--gold); font-size:0.75rem; font-weight:700;
+    letter-spacing:0.12em; text-transform:uppercase; margin-bottom:8px;
+  }
+  .section-title {
+    font-family:'Playfair Display',serif;
+    font-size:clamp(1.7rem,3.5vw,2.6rem); font-weight:900;
+    color: var(--navy); margin-bottom:10px;
+  }
+  .section-title span { color: var(--gold); }
+  .section-sub {
+    color: var(--text-muted); font-size:0.95rem; line-height:1.65;
+    max-width:460px; margin-bottom:44px;
+  }
+  .services-grid {
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:22px;
+  }
+  .service-card {
+    background: var(--white); border:1px solid rgba(10,22,40,0.07);
+    border-radius:16px; padding:28px 24px;
+    transition:all 0.3s; position:relative; overflow:hidden;
+    box-shadow: 0 2px 14px rgba(10,22,40,0.05);
+  }
+  .service-card::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    transform:scaleX(0); transition:transform 0.3s; transform-origin:left;
+  }
+  [dir="rtl"] .service-card::before { transform-origin:right; }
+  .service-card:hover { transform:translateY(-4px); box-shadow: var(--shadow); }
+  .service-card:hover::before { transform:scaleX(1); }
+  .svc-icon {
+    width:50px; height:50px; border-radius:12px;
+    background: linear-gradient(135deg, var(--navy), var(--navy-light));
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:18px;
+  }
+  .svc-icon.gold-bg { background: linear-gradient(135deg, var(--gold), var(--gold-light)); }
+  .svc-icon i { font-size:1.3rem; color: var(--gold); }
+  .svc-icon.gold-bg i { color: var(--navy); }
+  .price-tag-badge {
+    position:absolute; top:16px; right:16px;
+    background:var(--gold); color:var(--navy);
+    padding:3px 10px; border-radius:20px;
+    font-weight:700; font-size:0.75rem;
+  }
+  [dir="rtl"] .price-tag-badge { right:auto; left:16px; }
+  .svc-free-badge {
+    display:inline-block; background:#dcfce7; color:#166534;
+    padding:2px 9px; border-radius:20px; font-size:0.68rem; font-weight:700;
+    margin-top:10px;
+  }
+  .service-card h3 { font-size:1rem; font-weight:700; margin-bottom:7px; color:var(--navy); }
+  .service-card p { color:var(--text-muted); font-size:0.85rem; line-height:1.55; }
+
+  /* ── HOW IT WORKS ── */
+  .how-section { background: var(--navy); }
+  .how-section .section-title { color:var(--white); }
+  .how-section .section-sub { color:rgba(255,255,255,0.45); }
+  .steps-row {
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:0; position:relative;
+  }
+  .step { text-align:center; padding:32px 20px; position:relative; }
+  .step:not(:last-child)::after {
+    content:''; position:absolute;
+    right:0; top:50%; transform:translateY(-50%);
+    width:1px; height:38%; background:var(--border);
+  }
+  [dir="rtl"] .step:not(:last-child)::after { right:auto; left:0; }
+  .step-num {
+    width:54px; height:54px; border-radius:50%;
+    border:2px solid var(--gold);
+    display:flex; align-items:center; justify-content:center;
+    margin:0 auto 16px;
+    font-family:'Playfair Display',serif;
+    font-size:1.15rem; font-weight:900; color:var(--gold);
+  }
+  .step h4 { color:var(--white); font-size:0.92rem; font-weight:700; margin-bottom:7px; }
+  .step p { color:rgba(255,255,255,0.42); font-size:0.82rem; line-height:1.55; }
+
+  /* ── TRUST BAR ── */
+  .trust-bar {
+    background: var(--navy-mid);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 28px clamp(16px,5vw,64px);
+    display:flex; justify-content:center; align-items:center;
+    gap: clamp(24px,4vw,60px); flex-wrap:wrap;
+  }
+  .trust-item {
+    display:flex; flex-direction:column; align-items:center; gap:6px;
+    color:rgba(255,255,255,0.8);
+  }
+  .trust-item i { font-size:1.5rem; color:var(--gold); }
+  .trust-item span { font-size:0.72rem; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; }
+
+  /* ── CART OVERLAY ── */
+  .cart-overlay {
+    position:fixed; inset:0; background:rgba(10,22,40,0.72);
+    z-index:2000; display:none; align-items:flex-end; justify-content:center;
+    backdrop-filter:blur(5px);
+  }
+  .cart-overlay.open { display:flex; }
+  .cart-panel {
+    background:var(--white); width:100%; max-width:560px;
+    border-radius:22px 22px 0 0; padding:28px 22px 40px;
+    max-height:91vh; overflow-y:auto;
+    animation: slideUp 0.35s cubic-bezier(.22,1,.36,1) both;
+  }
+  .cart-header-row {
+    display:flex; align-items:center; justify-content:space-between;
+    margin-bottom:22px;
+  }
+  .cart-header-row h2 {
+    font-family:'Playfair Display',serif;
+    font-size:1.35rem; color:var(--navy);
+  }
+  .close-btn { background:none; border:none; font-size:1.3rem; color:var(--text-muted); cursor:pointer; padding:4px; }
+  .cart-item-row {
+    display:flex; align-items:center; gap:13px;
+    padding:13px; background:var(--offwhite);
+    border-radius:10px; margin-bottom:10px;
+  }
+  .ci-icon {
+    width:46px; height:46px; border-radius:8px;
+    background:var(--navy); display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .ci-icon i { color:var(--gold); font-size:1rem; }
+  .ci-info { flex:1; }
+  .ci-link { font-size:0.75rem; color:var(--text-muted); word-break:break-all; }
+  .ci-price { font-weight:700; color:var(--navy); font-size:0.9rem; margin-top:2px; }
+  .remove-item-btn { background:none; border:none; color:#e05; cursor:pointer; font-size:0.95rem; }
+  .min-warn {
+    background:#fff8e6; border:1px solid #f5c842;
+    color:#8a6a00; font-size:0.8rem; font-weight:600;
+    padding:8px 13px; border-radius:8px; margin-bottom:14px;
+    display:flex; align-items:center; gap:7px;
+  }
+  .insurance-row {
+    display:flex; align-items:center; gap:10px;
+    padding:12px 0; border-top:1px solid rgba(10,22,40,0.08);
+    border-bottom:1px solid rgba(10,22,40,0.08);
+    margin-bottom:14px; font-size:0.88rem;
+  }
+  .insurance-row input[type="checkbox"] { width:17px; height:17px; accent-color:var(--gold); cursor:pointer; flex-shrink:0; }
+  .insurance-row label { cursor:pointer; }
+  .total-box {
+    background:var(--navy); border-radius:12px; padding:16px 18px; margin-bottom:18px;
+  }
+  .total-row {
+    display:flex; justify-content:space-between;
+    color:rgba(255,255,255,0.55); font-size:0.85rem; margin-bottom:5px;
+  }
+  .total-final {
+    display:flex; justify-content:space-between; align-items:center;
+    padding-top:10px; border-top:1px solid var(--border); margin-top:4px;
+  }
+  .total-final span:first-child { color:var(--gold-light); font-weight:600; font-size:0.92rem; }
+  .total-amount { color:var(--gold); font-family:'Playfair Display',serif; font-size:1.55rem; font-weight:900; }
+  .empty-cart { text-align:center; padding:44px 0; color:var(--text-muted); }
+  .empty-cart i { font-size:2.4rem; color:#d1d5db; margin-bottom:12px; display:block; }
+
+  /* Order Form */
+  .order-form { display:none; }
+  .order-id-row {
+    background:linear-gradient(135deg,#f0f9ff,#e0f2fe); border:2px solid var(--navy-mid);
+    border-radius:10px; padding:13px 16px; text-align:center; margin-bottom:16px;
+  }
+  .order-id-label { font-size:0.75rem; color:var(--text-muted); margin-bottom:3px; }
+  .order-id-code { font-family:monospace; font-size:1.3rem; font-weight:700; color:var(--navy); letter-spacing:3px; }
+  .form-2col { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px; }
+  @media(max-width:460px) { .form-2col { grid-template-columns:1fr; } }
+  .field { display:flex; flex-direction:column; gap:5px; }
+  .field label { font-size:0.76rem; font-weight:700; color:var(--navy); letter-spacing:0.04em; }
+  .field input, .field textarea {
+    border:1.5px solid rgba(10,22,40,0.14); border-radius:9px;
+    padding:11px 13px; font-size:0.88rem; font-family:inherit;
+    outline:none; transition:border-color 0.2s; color:var(--navy); background:var(--offwhite);
+  }
+  .field input:focus, .field textarea:focus { border-color:var(--gold); background:var(--white); box-shadow:0 0 0 3px rgba(212,175,55,0.15); }
+  .field textarea { resize:vertical; min-height:100px; line-height:1.6; }
+  .field.full { grid-column:1/-1; }
+  .notes-hint { font-size:0.76rem; color:var(--text-muted); margin-top:5px; display:flex; gap:5px; align-items:flex-start; }
+  .notes-hint i { color:var(--gold); margin-top:1px; }
+  .submit-btn {
+    width:100%; background:linear-gradient(135deg,var(--gold),var(--gold-light));
+    color:var(--navy); border:none; padding:15px; border-radius:12px;
+    font-size:0.98rem; font-weight:700; cursor:pointer; font-family:inherit;
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    transition:all 0.22s; letter-spacing:0.04em; box-shadow:var(--shadow-gold);
+    margin-top:4px;
+  }
+  .submit-btn:hover { transform:translateY(-2px); box-shadow:0 12px 36px rgba(212,175,55,0.4); }
+  .submit-btn:disabled { opacity:0.6; cursor:not-allowed; transform:none; }
+  .proceed-btn {
+    width:100%; background:var(--navy); color:var(--white);
+    border:none; padding:13px; border-radius:12px;
+    font-size:0.92rem; font-weight:600; cursor:pointer; font-family:inherit;
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    transition:all 0.2s; margin-top:12px;
+  }
+  .proceed-btn:hover { background:var(--navy-light); }
+  .spinner {
+    display:none; width:18px; height:18px;
+    border:3px solid rgba(255,255,255,0.35); border-radius:50%;
+    border-top-color:var(--navy); animation:spin 0.8s linear infinite;
+  }
+  .success-inline {
+    display:none; background:#dcfce7; color:#166534;
+    padding:12px; border-radius:10px; margin-top:12px;
+    text-align:center; font-weight:600; font-size:0.9rem;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background:var(--navy); padding:52px clamp(16px,5vw,64px) 28px;
+    border-top:1px solid var(--border);
+  }
+  .footer-trust {
+    display:flex; justify-content:center; gap:clamp(20px,4vw,52px);
+    flex-wrap:wrap; padding-bottom:36px; margin-bottom:36px;
+    border-bottom:1px solid var(--border);
+  }
+  .footer-trust-item { text-align:center; }
+  .footer-trust-item i { font-size:1.4rem; color:var(--gold); display:block; margin-bottom:6px; }
+  .footer-trust-item span { color:rgba(255,255,255,0.5); font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; font-weight:600; }
+  .footer-grid {
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:32px; margin-bottom:36px;
+  }
+  .footer-col-title {
+    color:var(--gold-light); font-size:0.78rem; font-weight:700;
+    letter-spacing:0.1em; text-transform:uppercase; margin-bottom:14px;
+  }
+  .footer-col p, .footer-col a {
+    color:rgba(255,255,255,0.4); font-size:0.85rem; line-height:1.7;
+    text-decoration:none; display:block; transition:color 0.2s;
+  }
+  .footer-col a:hover { color:var(--gold-light); }
+  .footer-logo { font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:900; color:var(--gold); margin-bottom:10px; }
+  .footer-bottom { border-top:1px solid var(--border); padding-top:20px; text-align:center; color:rgba(255,255,255,0.28); font-size:0.78rem; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp { from{opacity:0;transform:translateY(26px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes slideUp { from{transform:translateY(100%)} to{transform:translateY(0)} }
+  @keyframes spin { to{transform:rotate(360deg)} }
+
+  /* ── SUCCESS OVERLAY ── */
+  .success-overlay {
+    position:fixed; inset:0; background:rgba(10,22,40,0.92);
+    z-index:3000; display:none; align-items:center; justify-content:center;
+    backdrop-filter:blur(8px); padding:16px;
+  }
+  .success-overlay.open { display:flex; }
+  .success-card {
+    background:var(--white); border-radius:20px; padding:40px 30px;
+    max-width:400px; width:100%; text-align:center;
+    animation: fadeUp 0.4s ease both;
+  }
+  .success-icon { font-size:3rem; margin-bottom:14px; }
+  .success-card h3 { font-family:'Playfair Display',serif; font-size:1.45rem; color:var(--navy); margin-bottom:8px; }
+  .success-card p { color:var(--text-muted); font-size:0.9rem; line-height:1.6; margin-bottom:20px; }
+  .success-order-id { font-family:monospace; font-size:1.3rem; font-weight:700; color:var(--navy); letter-spacing:3px; display:block; margin-bottom:22px; }
+  .wa-btn {
+    width:100%; background:#25D366; color:#fff; border:none;
+    padding:14px; border-radius:12px; font-size:0.95rem; font-weight:700;
+    cursor:pointer; font-family:inherit; display:flex; align-items:center;
+    justify-content:center; gap:10px; transition:all 0.2s;
+  }
+  .wa-btn:hover { background:#1ebe5a; }
+
+  @media(max-width:600px) {
+    .step:not(:last-child)::after { display:none; }
+    nav { padding:0 14px; }
+    .nav-links .lang-btn { padding:4px 8px; font-size:0.7rem; }
+    .flow-bar { gap:8px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <i class="fa-solid fa-ship"></i>
+    <div>
+      CHRILY
+      <span class="nav-sub">EU → Morocco</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <button class="lang-btn active" onclick="setLang('en')">🇬🇧 EN</button>
+    <button class="lang-btn" onclick="setLang('fr')">🇫🇷 FR</button>
+    <button class="lang-btn" onclick="setLang('ar')">🇲🇦 AR</button>
+    <button class="cart-btn" onclick="openCart()">
+      <i class="fa-solid fa-basket-shopping"></i>
+      <span data-key="cart">Cart</span>
+      <div class="cart-count" id="cartCount">0</div>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+
+  <!-- EU Store → We Buy → Ship → Morocco -->
+  <div class="flow-bar">
+    <div class="flow-item"><i class="fa-solid fa-warehouse"></i><span data-key="flowStore">EU Store</span></div>
+    <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+    <div class="flow-item"><i class="fa-solid fa-credit-card"></i><span data-key="flowBuy">We Buy</span></div>
+    <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+    <div class="flow-item"><i class="fa-solid fa-plane"></i><span data-key="flowShip">Ship</span></div>
+    <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+    <div class="flow-item"><i class="fa-solid fa-home"></i><span data-key="flowMA">Morocco</span></div>
+  </div>
+
+  <div class="hero-badge"><i class="fa-solid fa-crown"></i><span data-key="badge">EU to Morocco Shipping Agent</span></div>
+  <h1 data-key="heroH1">Paste a Link.<br><span>We Deliver to Morocco.</span></h1>
+  <p class="hero-stores" data-key="heroStores"></p>
+
+  <div class="paste-box">
+    <span class="paste-label" data-key="pasteLabel">Product Link</span>
+    <div class="paste-row">
+      <input class="paste-input" id="pasteInput" type="url" placeholder="https://..." data-key-ph="pastePh">
+      <button class="check-btn" onclick="checkProduct()">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <span data-key="checkBtn">Check</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="preview-card" id="previewCard" style="max-width:620px;width:100%;z-index:1;margin-top:20px;">
+    <div class="preview-inner">
+      <div class="preview-img"><i class="fa-solid fa-box-open"></i></div>
+      <div class="preview-info">
+        <span class="preview-link" id="previewLink"></span>
+        <div class="preview-meta">
+        </div>
+      </div>
+      <button class="add-cart-btn" onclick="addToCart()" data-key="addCart">Add to Cart</button>
+    </div>
+    <div class="added-msg" id="addedMsg"><i class="fa-solid fa-circle-check"></i> Added to cart!</div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><i class="fa-solid fa-warehouse"></i><span data-key="t1">EU Warehouse</span></div>
+  <div class="trust-item"><i class="fa-solid fa-plane"></i><span data-key="t2">Fast Shipping</span></div>
+  <div class="trust-item"><i class="fa-solid fa-shield-halved"></i><span data-key="t3">Insured</span></div>
+  <div class="trust-item"><i class="fa-solid fa-location-dot"></i><span data-key="t4">Morocco Delivery</span></div>
+  <div class="trust-item"><i class="fa-solid fa-box-open"></i><span data-key="t5">New & Used</span></div>
+</div>
+
+<!-- SERVICES -->
+<section class="section" style="background:var(--offwhite)">
+  <p class="section-eyebrow" data-key="svcEye">Our Services</p>
+  <h2 class="section-title" data-key="svcTitle">Everything You <span>Need</span></h2>
+  <p class="section-sub" data-key="svcSub">From purchase to your door — we handle it all.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="svc-icon"><i class="fa-solid fa-box-open"></i></div>
+      <h3 data-key="s1t">We Buy For You</h3>
+      <p data-key="s1p">New or used items from any EU website — Shein, Amazon, Zara, AliExpress and more.</p>
+      <span class="svc-free-badge" data-key="s1b">NEW & USED</span>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon gold-bg"><i class="fa-solid fa-shield-alt"></i></div>
+      <span class="price-tag-badge">50 Dhs</span>
+      <h3 data-key="s2t">Insurance</h3>
+      <p data-key="s2p">Full coverage up to €1,000 for your goods. Recommended for items over 500 Dhs.</p>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon"><i class="fa-solid fa-camera"></i></div>
+      <h3 data-key="s3t">Photo Proof</h3>
+      <p data-key="s3p">5 free photos when your item arrives at our EU warehouse — see before it ships.</p>
+      <span class="svc-free-badge">5 FREE</span>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon"><i class="fa-solid fa-handshake"></i></div>
+      <h3 data-key="s4t">Local Pickup</h3>
+      <p data-key="s4p">Collect in Casablanca, Rabat, Marrakech, Tangier, Agadir, Fès and more cities.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section how-section">
+  <p class="section-eyebrow" data-key="howEye">Simple Process</p>
+  <h2 class="section-title" data-key="howTitle">How It <span>Works</span></h2>
+  <p class="section-sub" data-key="howSub">From link to your door in four easy steps.</p>
+  <div class="steps-row">
+    <div class="step"><div class="step-num">01</div><h4 data-key="st1t">Paste Link</h4><p data-key="st1p">Copy any product URL from Shein, Amazon, Temu, Zara or any EU site and paste it above.</p></div>
+    <div class="step"><div class="step-num">02</div><h4 data-key="st2t">We Purchase</h4><p data-key="st2p">We buy the item on your behalf from the EU store and receive it at our warehouse.</p></div>
+    <div class="step"><div class="step-num">03</div><h4 data-key="st3t">We Ship</h4><p data-key="st3p">Your item is shipped from Europe to Morocco with full tracking and optional insurance.</p></div>
+    <div class="step"><div class="step-num">04</div><h4 data-key="st4t">You Receive</h4><p data-key="st4p">Pick up in your city or get it delivered to your address anywhere in Morocco.</p></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-trust">
+    <div class="footer-trust-item"><i class="fa-solid fa-warehouse"></i><span data-key="t1">EU Warehouse</span></div>
+    <div class="footer-trust-item"><i class="fa-solid fa-plane"></i><span data-key="t2">Fast Shipping</span></div>
+    <div class="footer-trust-item"><i class="fa-solid fa-shield-halved"></i><span data-key="t3">Insured</span></div>
+    <div class="footer-trust-item"><i class="fa-solid fa-location-dot"></i><span data-key="t4">Morocco Delivery</span></div>
+  </div>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div class="footer-logo">CHRILY</div>
+      <p data-key="footDesc">Professional shipping from EU to Morocco. New &amp; used goods.</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title" data-key="fContact">Contact</div>
+      <p>WhatsApp: +491625719871</p>
+      <p>support@chrily.com</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title" data-key="fCities">Cities</div>
+      <p>Casablanca, Rabat, Marrakech</p>
+      <p>Tangier, Agadir, Fès...</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title" data-key="fHours">Hours</div>
+      <p>Mon–Sat: 9h–20h</p>
+      <p data-key="fSunday">Sunday: Closed</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2024 CHRILY Shipping Agent | EU ↔ Morocco | <span data-key="footHeart">Made with ❤️</span>
+  </div>
+</footer>
+
+<!-- CART OVERLAY -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCartOnBg(event)">
+  <div class="cart-panel">
+    <div class="cart-header-row">
+      <h2 data-key="cartTitle">Your Cart</h2>
+      <button class="close-btn" onclick="closeCart()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <div id="cartEmptyDiv" class="empty-cart">
+      <i class="fa-solid fa-basket-shopping"></i>
+      <p data-key="emptyCart">No items yet. Paste a link above.</p>
+    </div>
+
+    <div id="cartContent" style="display:none">
+      <div class="min-warn"><i class="fa-solid fa-triangle-exclamation"></i><span data-key="minWarn">Minimum order weight: 5 kg</span></div>
+      <div id="itemsList"></div>
+
+      <div class="insurance-row">
+        <input type="checkbox" id="insuranceCheck" onchange="updateTotal()">
+        <label for="insuranceCheck" data-key="insLabel">Add Insurance (50 Dhs) — Recommended for items over 500 Dhs</label>
+      </div>
+
+      <div class="total-box">
+        <div class="total-row"><span data-key="tItem">Item Price</span><span id="tItemAmt">200 Dhs</span></div>
+        <div class="total-row"><span data-key="tShip">Flat Shipping Fee</span><span>50 Dhs</span></div>
+        <div class="total-row" id="tInsRow" style="display:none"><span data-key="tIns">Insurance</span><span>50 Dhs</span></div>
+        <div class="total-final">
+          <span data-key="tTotal">Total</span>
+          <span class="total-amount" id="totalAmt">250 Dhs</span>
+        </div>
+      </div>
+
+      <!-- ORDER FORM -->
+      <div class="order-form" id="orderForm">
+        <div class="order-id-row">
+          <div class="order-id-label" data-key="orderId">Your Order Code</div>
+          <div class="order-id-code" id="orderIdCode">CHR-XXXX</div>
+        </div>
+        <div class="form-2col">
+          <div class="field">
+            <label data-key="fName">Full Name</label>
+            <input type="text" id="fName" placeholder="Full Name" data-key-ph="fNamePh">
+          </div>
+          <div class="field">
+            <label data-key="fWA">WhatsApp Number</label>
+            <input type="tel" id="fWA" placeholder="+212 6XX XXX XXX">
+          </div>
+          <div class="field">
+            <label data-key="fCity">City in Morocco</label>
+            <input type="text" id="fCity" placeholder="City in Morocco" data-key-ph="fCityPh">
+          </div>
+          <div class="field">
+            <label data-key="fAddr">Address / Pickup Point</label>
+            <input type="text" id="fAddr" placeholder="Address / Pickup Point" data-key-ph="fAddrPh">
+          </div>
+          <div class="field full">
+            <label data-key="fNotes">Order Notes &amp; Special Requests</label>
+            <textarea id="fNotes"
+              data-placeholder-en="Tell us everything about your order here... Size, color, quantity, condition (new/used), preferred delivery date, special instructions, or any questions you have!"
+              data-placeholder-fr="Dites-nous tout sur votre commande ici... Taille, couleur, quantité, état (neuf/occasion), date de livraison préférée, instructions spéciales!"
+              data-placeholder-ar="أخبرنا بكل شيء عن طلبك هنا... المقاس، اللون، الكمية، الحالة (جديد/مستعمل)، تعليمات خاصة، أو أي أسئلة!"
+            ></textarea>
+            <div class="notes-hint"><i class="fa-solid fa-lightbulb"></i><span data-key="notesHint">Be specific! The more details, the better we can help you.</span></div>
+          </div>
+        </div>
+        <button class="submit-btn" id="submitBtn" onclick="submitOrder()">
+          <div class="spinner" id="btnSpinner"></div>
+          <i class="fa-brands fa-whatsapp" id="btnIcon" style="font-size:1.1rem"></i>
+          <span data-key="submitBtn">Send Order via WhatsApp</span>
+        </button>
+        <div class="success-inline" id="successInline">
+          <i class="fa-solid fa-circle-check"></i>
+          <span data-key="succInline"> Order sent! Redirecting to WhatsApp…</span>
+        </div>
+      </div>
+
+      <button class="proceed-btn" id="proceedBtn" onclick="showOrderForm()">
+        <span data-key="proceedBtn">Proceed to Order</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- SUCCESS OVERLAY -->
+<div class="success-overlay" id="successOverlay">
+  <div class="success-card">
+    <div class="success-icon">🎉</div>
+    <h3 data-key="succTitle">Order Submitted!</h3>
+    <p data-key="succP">Your order has been recorded. Redirecting you to WhatsApp to confirm with our team.</p>
+    <span class="success-order-id" id="succOrderId">CHR-XXXX</span>
+    <button class="wa-btn" id="waBtn">
+      <i class="fa-brands fa-whatsapp"></i>
+      <span data-key="waBtn">Open WhatsApp</span>
+    </button>
+  </div>
+</div>
+
+<script>
+// ── CONFIG ────────────────────────────────────────────────────────
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzDLsasbur587RkJKtCPckgiBvB_uNfb-6esDxQATjVVIjo-TA-ZVt5w8NgM5drLWM8/exec';
+const WHATSAPP_NUMBER   = '491625719871';
+const SHIPPING_FEE      = 50;
+const INSURANCE_FEE     = 50;
+const ITEM_PRICE        = 200;
+
+let currentLang = 'en';
+let cart = [];
+let currentLink = '';
+let currentOrderId = '';
+
+// ── TRANSLATIONS ─────────────────────────────────────────────────
+const T = {
+  en: {
+    badge:'EU to Morocco Shipping Agent',
+    heroH1:'Paste a Link.<br><span>We Deliver to Morocco.</span>',
+    heroStores:'<strong>Shein, Temu, Amazon, AliExpress, Zara, H&M</strong> → We deliver to Morocco',
+    pasteLabel:'Product Link', pastePh:'https://...', checkBtn:'Check', addCart:'Add to Cart',
+    flowStore:'EU Store', flowBuy:'We Buy', flowShip:'Ship', flowMA:'Morocco',
+    t1:'EU Warehouse', t2:'Fast Shipping', t3:'Insured', t4:'Morocco Delivery', t5:'New & Used',
+    svcEye:'Our Services', svcTitle:'Everything You <span>Need</span>', svcSub:'From purchase to your door — we handle it all.',
+    s1t:'We Buy For You', s1p:'New or used items from any EU website — Shein, Amazon, Zara, AliExpress and more.', s1b:'NEW & USED',
+    s2t:'Insurance', s2p:'Full coverage up to €1,000 for your goods. Recommended for items over 500 Dhs.',
+    s3t:'Photo Proof', s3p:'5 free photos when your item arrives at our EU warehouse.',
+    s4t:'Local Pickup', s4p:'Collect in Casablanca, Rabat, Marrakech, Tangier, Agadir, Fès and more.',
+    howEye:'Simple Process', howTitle:'How It <span>Works</span>', howSub:'From link to your door in four easy steps.',
+    st1t:'Paste Link', st1p:'Copy any product URL from any EU store and paste it above.',
+    st2t:'We Purchase', st2p:'We buy the item on your behalf and receive it at our EU warehouse.',
+    st3t:'We Ship', st3p:'Your item is shipped from Europe to Morocco with full tracking.',
+    st4t:'You Receive', st4p:'Pick up in your city or get it delivered anywhere in Morocco.',
+    footDesc:'Professional shipping from EU to Morocco. New & used goods.',
+    fContact:'Contact', fCities:'Cities', fHours:'Hours', fSunday:'Sunday: Closed',
+    footHeart:'Made with ❤️',
+    cart:'Cart', cartTitle:'Your Cart', emptyCart:'No items yet. Paste a link above.',
+    minWarn:'Minimum order weight: 5 kg',
+    insLabel:'Add Insurance (50 Dhs) — Recommended for items over 500 Dhs',
+    tItem:'Item Price', tShip:'Flat Shipping Fee', tIns:'Insurance', tTotal:'Total',
+    orderId:'Your Order Code',
+    fName:'Full Name', fNamePh:'Full Name', fWA:'WhatsApp Number',
+    fCity:'City in Morocco', fCityPh:'City in Morocco',
+    fAddr:'Address / Pickup Point', fAddrPh:'Address / Pickup Point',
+    fNotes:'Order Notes & Special Requests',
+    notesHint:'Be specific! The more details, the better we can help you.',
+    submitBtn:'Send Order via WhatsApp', proceedBtn:'Proceed to Order',
+    succTitle:'Order Submitted!', succP:'Your order has been recorded. Redirecting you to WhatsApp.',
+    waBtn:'Open WhatsApp', succInline:' Order sent! Redirecting to WhatsApp…',
+  },
+  fr: {
+    badge:'Agent d\'expédition EU → Maroc',
+    heroH1:'Collez un Lien.<br><span>On Livre au Maroc.</span>',
+    heroStores:'<strong>Shein, Temu, Amazon, AliExpress, Zara, H&M</strong> → Livraison Maroc',
+    pasteLabel:'Lien Produit', pastePh:'https://...', checkBtn:'Vérifier', addCart:'Ajouter',
+    flowStore:'Boutique EU', flowBuy:'On Achète', flowShip:'Expédition', flowMA:'Maroc',
+    t1:'Entrepôt EU', t2:'Livraison Rapide', t3:'Assuré', t4:'Livraison Maroc', t5:'Neuf & Occasion',
+    svcEye:'Nos Services', svcTitle:'Tout Ce Dont <span>Vous Avez Besoin</span>', svcSub:'De l\'achat à votre porte — on s\'occupe de tout.',
+    s1t:'On Achète Pour Vous', s1p:'Articles neufs ou d\'occasion de n\'importe quel site EU.', s1b:'NEUF & OCCAS',
+    s2t:'Assurance', s2p:'Couverture complète jusqu\'à 1000€. Recommandé pour +500 Dhs.',
+    s3t:'Photos Preuves', s3p:'5 photos gratuites à l\'arrivée de votre article à notre entrepôt.',
+    s4t:'Retrait Local', s4p:'Retrait à Casa, Rabat, Marrakech, Tanger, Agadir, Fès...',
+    howEye:'Processus Simple', howTitle:'Comment Ça <span>Marche</span>', howSub:'Du lien à votre porte en quatre étapes.',
+    st1t:'Collez le Lien', st1p:'Copiez l\'URL de n\'importe quel site EU et collez-la ci-dessus.',
+    st2t:'On Achète', st2p:'On achète l\'article en votre nom et le réceptionne dans notre entrepôt.',
+    st3t:'On Expédie', st3p:'L\'article est expédié d\'Europe au Maroc avec suivi complet.',
+    st4t:'Vous Recevez', st4p:'Retrait dans votre ville ou livraison à domicile partout au Maroc.',
+    footDesc:'Livraison professionnelle UE-Maroc. Neuf et occasion.',
+    fContact:'Contact', fCities:'Villes', fHours:'Horaires', fSunday:'Dimanche: Fermé',
+    footHeart:'Fait avec ❤️',
+    cart:'Panier', cartTitle:'Votre Panier', emptyCart:'Aucun article. Collez un lien ci-dessus.',
+    minWarn:'Poids minimum de commande : 5 kg',
+    insLabel:'Ajouter Assurance (50 Dhs) — Recommandé pour +500 Dhs',
+    tItem:'Prix article', tShip:'Frais de livraison', tIns:'Assurance', tTotal:'Total',
+    orderId:'Votre Code de Commande',
+    fName:'Nom complet', fNamePh:'Nom complet', fWA:'Numéro WhatsApp',
+    fCity:'Ville au Maroc', fCityPh:'Ville au Maroc',
+    fAddr:'Adresse / Point de retrait', fAddrPh:'Adresse / Point de retrait',
+    fNotes:'Notes de Commande & Demandes Spéciales',
+    notesHint:'Soyez précis ! Plus de détails = meilleur service.',
+    submitBtn:'Envoyer Commande WhatsApp', proceedBtn:'Passer à la commande',
+    succTitle:'Commande envoyée !', succP:'Votre commande a été enregistrée. Redirection vers WhatsApp.',
+    waBtn:'Ouvrir WhatsApp', succInline:' Commande envoyée ! Redirection…',
+  },
+  ar: {
+    badge:'وكيل شحن من أوروبا إلى المغرب',
+    heroH1:'الصق الرابط.<br><span>نوصّل إلى المغرب.</span>',
+    heroStores:'<strong>شي إن، تيمو، أمازون، علي إكسبرس، زارا، إتش آند إم</strong> → توصيل للمغرب',
+    pasteLabel:'رابط المنتج', pastePh:'https://...', checkBtn:'تحقق', addCart:'أضف للسلة',
+    flowStore:'متجر أوروبي', flowBuy:'نشتري', flowShip:'شحن', flowMA:'المغرب',
+    t1:'مستودع أوروبي', t2:'شحن سريع', t3:'مؤمّن', t4:'توصيل للمغرب', t5:'جديد ومستعمل',
+    svcEye:'خدماتنا', svcTitle:'كل ما <span>تحتاجه</span>', svcSub:'من الشراء إلى بابك — نتولى كل شيء.',
+    s1t:'نشتري لأجلك', s1p:'منتجات جديدة أو مستعملة من أي موقع أوروبي.', s1b:'جديد ومستعمل',
+    s2t:'تأمين', s2p:'تغطية كاملة حتى 1000 يورو. موصى به للمنتجات أكثر من 500 درهم.',
+    s3t:'صور إثبات', s3p:'5 صور مجانية عند وصول منتجك لمستودعنا الأوروبي.',
+    s4t:'استلام محلي', s4p:'الاستلام في الدار البيضاء، الرباط، مراكش، طنجة، أكادير، فاس...',
+    howEye:'عملية بسيطة', howTitle:'كيف <span>يعمل</span>', howSub:'من الرابط إلى بابك في أربع خطوات.',
+    st1t:'الصق الرابط', st1p:'انسخ رابط أي منتج من أي موقع أوروبي والصقه أعلاه.',
+    st2t:'نشتري', st2p:'نشتري المنتج نيابةً عنك ونستقبله في مستودعنا.',
+    st3t:'نشحن', st3p:'يُشحن المنتج من أوروبا إلى المغرب مع تتبع كامل.',
+    st4t:'تستلم', st4p:'استلم في مدينتك أو توصيل إلى باب منزلك.',
+    footDesc:'شحن احترافي من أوروبا للمغرب. منتجات جديدة ومستعملة.',
+    fContact:'تواصل', fCities:'المدن', fHours:'المواعيد', fSunday:'الأحد: مغلق',
+    footHeart:'صنع بحب ❤️',
+    cart:'السلة', cartTitle:'سلتك', emptyCart:'لا توجد عناصر. ألصق رابطاً أعلاه.',
+    minWarn:'الحد الأدنى للوزن: 5 كغ',
+    insLabel:'إضافة تأمين (50 درهم) — موصى به للأكثر من 500 درهم',
+    tItem:'سعر المنتج', tShip:'رسوم الشحن', tIns:'التأمين', tTotal:'الإجمالي',
+    orderId:'رمز طلبك',
+    fName:'الاسم الكامل', fNamePh:'الاسم الكامل', fWA:'رقم واتساب',
+    fCity:'المدينة في المغرب', fCityPh:'المدينة',
+    fAddr:'العنوان / نقطة الاستلام', fAddrPh:'العنوان',
+    fNotes:'ملاحظات الطلب والطلبات الخاصة',
+    notesHint:'كن محدداً! كلما زادت التفاصيل، كان بإمكاننا مساعدتك أفضل.',
+    submitBtn:'إرسال الطلب عبر واتساب', proceedBtn:'المتابعة للطلب',
+    succTitle:'تم إرسال الطلب!', succP:'تم تسجيل طلبك. جاري التوجيه إلى واتساب.',
+    waBtn:'فتح واتساب', succInline:' تم إرسال الطلب! جاري التوجيه…',
+  }
+};
+
+// ── LANGUAGE ──────────────────────────────────────────────────────
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.querySelectorAll('.lang-btn').forEach((b,i) => {
+    b.classList.toggle('active', ['en','fr','ar'][i] === lang);
+  });
+  const t = T[lang];
+  document.querySelectorAll('[data-key]').forEach(el => {
+    const k = el.getAttribute('data-key');
+    if (t[k] !== undefined) el.innerHTML = t[k];
+  });
+  document.querySelectorAll('[data-key-ph]').forEach(el => {
+    const k = el.getAttribute('data-key-ph');
+    if (t[k]) el.placeholder = t[k];
+  });
+  // Notes textarea placeholder
+  const notes = document.getElementById('fNotes');
+  if (notes) {
+    const ph = notes.getAttribute(`data-placeholder-${lang}`);
+    if (ph) notes.placeholder = ph;
+  }
+  localStorage.setItem('lang', lang);
+}
+
+// ── PRODUCT CHECK ─────────────────────────────────────────────────
+function checkProduct() {
+  const url = document.getElementById('pasteInput').value.trim();
+  if (!url || !url.startsWith('http')) {
+    document.getElementById('pasteInput').style.borderColor = 'rgba(220,50,50,0.7)';
+    setTimeout(() => document.getElementById('pasteInput').style.borderColor = '', 1200);
+    return;
+  }
+  currentLink = url;
+  const card = document.getElementById('previewCard');
+  document.getElementById('previewLink').textContent = url.length > 58 ? url.slice(0,58)+'…' : url;
+  document.getElementById('addedMsg').style.display = 'none';
+  card.classList.add('show');
+}
+
+// ── CART ──────────────────────────────────────────────────────────
+function addToCart() {
+  if (!currentLink) return;
+  cart.push({ link: currentLink, weight: 0.5, price: ITEM_PRICE });
+  updateCartCount();
+  document.getElementById('addedMsg').style.display = 'block';
+  document.querySelector('.add-cart-btn').style.display = 'none';
+  setTimeout(() => {
+    document.getElementById('previewCard').classList.remove('show');
+    document.querySelector('.add-cart-btn').style.display = '';
+    document.getElementById('pasteInput').value = '';
+    currentLink = '';
+  }, 1400);
+}
+
+function removeItem(idx) {
+  cart.splice(idx, 1);
+  updateCartUI();
+}
+
+function updateCartCount() {
+  document.getElementById('cartCount').textContent = cart.length;
+}
+
+function updateCartUI() {
+  updateCartCount();
+  const empty = document.getElementById('cartEmptyDiv');
+  const content = document.getElementById('cartContent');
+  if (cart.length === 0) {
+    empty.style.display = 'block'; content.style.display = 'none'; return;
+  }
+  empty.style.display = 'none'; content.style.display = 'block';
+  document.getElementById('itemsList').innerHTML = cart.map((item, i) => `
+    <div class="cart-item-row">
+      <div class="ci-icon"><i class="fa-solid fa-box-open"></i></div>
+      <div class="ci-info">
+        <div class="ci-link">${item.link.length>48?item.link.slice(0,48)+'…':item.link}</div>
+        <div class="ci-price">${item.weight}kg — ${item.price} Dhs</div>
+      </div>
+      <button class="remove-item-btn" onclick="removeItem(${i})"><i class="fa-solid fa-trash-can"></i></button>
+    </div>
+  `).join('');
+  updateTotal();
+}
+
+function updateTotal() {
+  const ins = document.getElementById('insuranceCheck').checked;
+  const itemTotal = cart.reduce((s,i) => s+i.price, 0);
+  const total = itemTotal + SHIPPING_FEE + (ins ? INSURANCE_FEE : 0);
+  document.getElementById('tItemAmt').textContent = itemTotal + ' Dhs';
+  document.getElementById('tInsRow').style.display = ins ? 'flex' : 'none';
+  document.getElementById('totalAmt').textContent = total + ' Dhs';
+}
+
+function openCart() {
+  updateCartUI();
+  document.getElementById('cartOverlay').classList.add('open');
+}
+function closeCart() { document.getElementById('cartOverlay').classList.remove('open'); }
+function closeCartOnBg(e) { if (e.target === document.getElementById('cartOverlay')) closeCart(); }
+
+// ── ORDER FORM ────────────────────────────────────────────────────
+function genOrderId() {
+  return 'CHR-' + Math.random().toString(36).substr(2,4).toUpperCase();
+}
+
+function showOrderForm() {
+  if (!currentOrderId) currentOrderId = genOrderId();
+  document.getElementById('orderIdCode').textContent = currentOrderId;
+  document.getElementById('orderForm').style.display = 'block';
+  document.getElementById('proceedBtn').style.display = 'none';
+  document.getElementById('orderForm').scrollIntoView({ behavior:'smooth', block:'nearest' });
+}
+
+// ── SUBMIT ────────────────────────────────────────────────────────
+async function submitOrder() {
+  const name  = document.getElementById('fName').value.trim();
+  const phone = document.getElementById('fWA').value.trim();
+  const city  = document.getElementById('fCity').value.trim();
+  const addr  = document.getElementById('fAddr').value.trim();
+  const notes = document.getElementById('fNotes').value.trim();
+
+  if (!name || !phone || !city) {
+    const msg = currentLang==='ar' ? 'يرجى ملء الاسم والهاتف والمدينة' :
+                currentLang==='fr' ? 'Veuillez remplir le nom, téléphone et ville' :
+                'Please fill in Name, WhatsApp, and City.';
+    alert(msg); return;
+  }
+
+  const ins = document.getElementById('insuranceCheck').checked;
+  const itemTotal = cart.reduce((s,i) => s+i.price, 0);
+  const totalWeight = cart.reduce((s,i) => s+i.weight, 0);
+  const finalTotal = itemTotal + SHIPPING_FEE + (ins ? INSURANCE_FEE : 0);
+  const links = cart.map(i => i.link).join(' | ');
+
+  const btn = document.getElementById('submitBtn');
+  const spinner = document.getElementById('btnSpinner');
+  const icon = document.getElementById('btnIcon');
+  btn.disabled = true; spinner.style.display = 'block'; icon.style.display = 'none';
+
+  const orderData = {
+    orderCode: currentOrderId, name, phone, city,
+    address: addr, notes, links,
+    totalWeight: totalWeight.toFixed(1),
+    totalPrice: itemTotal, insurance: ins ? 50 : 0, finalTotal,
+    timestamp: new Date().toISOString(), language: currentLang
+  };
+
+  // Send to Google Sheets (no-cors)
+  try {
+    await fetch(GOOGLE_SCRIPT_URL, {
+      method: 'POST', mode: 'no-cors',
+      body: JSON.stringify(orderData)
+    });
+  } catch(e) { /* no-cors — expected */ }
+
+  // WhatsApp message
+  const msg = encodeURIComponent(
+    `*CHRILY ORDER ${currentOrderId}*\n\n`+
+    `👤 *Name:* ${name}\n`+
+    `📞 *Phone:* ${phone}\n`+
+    `📍 *City:* ${city}\n`+
+    `🏠 *Address:* ${addr||'N/A'}\n\n`+
+    `🛒 *Items:* ${cart.length}\n`+
+    `📦 *Weight:* ${orderData.totalWeight}kg\n`+
+    `💰 *Total:* ${finalTotal} Dhs\n`+
+    `🛡️ *Insurance:* ${ins?'Yes (50 Dhs)':'No'}\n\n`+
+    `🔗 *Links:* ${links}\n\n`+
+    `📝 *Notes:* ${notes||'None'}\n\n`+
+    `✅ Order saved to system`
+  );
+  const waURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
+
+  btn.disabled = false; spinner.style.display = 'none'; icon.style.display = 'block';
+  document.getElementById('successInline').style.display = 'block';
+
+  setTimeout(() => {
+    closeCart();
+    document.getElementById('succOrderId').textContent = currentOrderId;
+    document.getElementById('waBtn').onclick = () => window.open(waURL, '_blank');
+    document.getElementById('successOverlay').classList.add('open');
+    window.open(waURL, '_blank');
+    // reset
+    document.getElementById('successInline').style.display = 'none';
+    currentOrderId = '';
+  }, 900);
+}
+
+// ── INIT ──────────────────────────────────────────────────────────
+document.getElementById('successOverlay').addEventListener('click', function(e) {
+  if (e.target === this) this.classList.remove('open');
+});
+
+const saved = localStorage.getItem('lang') || 'en';
+setLang(saved);
+// Trigger active state on correct button
+document.querySelectorAll('.lang-btn').forEach((b,i) => {
+  b.classList.toggle('active', ['en','fr','ar'][i] === saved);
+});
+</script>
+</body>
+</html>
